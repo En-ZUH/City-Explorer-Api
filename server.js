@@ -7,16 +7,17 @@ let PORT = process.env.PORT
 const app = express()
 app.use(cors())
 app.get('/', function (req, res) {
-    res.send(data)
+  res.send(data)
 })
 app.get('/weather', function (req, res) {
-    const arrOfData = weather.data.map(data => new Weather(data));
-    res.send(arrOfData);
+  const arrOfData = weather.data.map(data => new Weather(data));
+  res.send(arrOfData);
 })
 class Weather {
-    constructor(data) {
-        this.date = data.valid_date;
-        this.description = data.weather.description;
-    }
+  constructor(data) {
+    this.date = data.valid_date;
+    this.description = data.weather.description;
+  }
 }
-app.listen(PORT)
+app.listen(PORT) 
+ 
