@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const weather = require('./asesst/data/weather.json')
+const weather = require('./Data/weather.json')
 const { json } = require('express')
 require('dotenv').config()
 let PORT = process.env.PORT
@@ -19,5 +19,5 @@ class Weather {
     this.description = data.weather.description;
   }
 }
-app.listen(PORT) 
- 
+app.listen(PORT)
+
