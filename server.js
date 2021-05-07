@@ -10,6 +10,7 @@ require('dotenv').config()
 
 let PORT = process.env.PORT
 let WEATHER_API_KEY = process.env.WEATHER_API_KEY
+let MOVIE_API_KEY = process.env.MOVIE_API_KEY
 
 
 
@@ -64,22 +65,34 @@ class Weather {
 
 
 
-// app.get('/movie', function (req, res) {
-//     const url = `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${req.quary.quary}&limit=9`
 
 
-//     const arrOfmovies = movie.data.map(movieData => new Movie(movieData));
-//     res.send(arrOfmovies);
-// })
-
-// class Movie {
-//     constructor(movieData) {
-//         this.name = movieData.origin_country;
-//         this.tiltle = movieData.original_title;
 
 
-//     }
-// }
+app.get('/movie', function (req, res) {
+  try {
+    //console.log(req.query);
+    const movieURL = `https://api.themoviedb.org/3/search/movie?api_key=${MOVIE_API_KEY}&query=${req.query.query}`;
+
+    superagent.get(movieURL).then(movieData => {
+      const arrOfData = movieData.body.results.map(data => new Movie(data));
+      res.send(arrOfData);
+
+    })
+  }
+  catch (error) {
+    console.log('error');
+  };
+
+});
+
+class Movie {
+  constructor(data) {
+    this.title = data.original_title;
+    this.overview = data.overview;
+    this.movieImage = data.poster_path;
+  }
+}
 
 
 app.listen(PORT, () => console.log(`app is listening on ${PORT}`))
