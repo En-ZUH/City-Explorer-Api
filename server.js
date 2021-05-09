@@ -20,8 +20,8 @@ app.use(cors())
 
 
 app.get('/', function (req, res) {
-  res.send(data)
-  // res.send('check')
+  // res.send(data)
+  res.send('check')
 })
 
 // STATIC
