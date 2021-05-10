@@ -6,8 +6,6 @@ const showWeather = require('./Components/Weather');
 const app = express();
 app.use(cors());
 const showMovie = require('./Components/Movie');
-
-
 let PORT = process.env.PORT
 
 
