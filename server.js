@@ -6,6 +6,7 @@ const showWeather = require('./Components/Weather');
 const app = express();
 app.use(cors());
 const showMovie = require('./Components/Movie');
+
 let PORT = process.env.PORT
 
 
@@ -13,6 +14,7 @@ app.get('/', function (req, res) {
   // res.send(data)
   res.send('check')
 })
+
 
 // console.log(showWeather.name);
 // app.get('/weather', showWeather.getWeather); in case of exporting obj, contains more than a fun
