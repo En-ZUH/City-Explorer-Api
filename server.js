@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 const showMovie = require('./Components/Movie');
 
-let PORT = process.env.PORT
+let PORT = process.env.PORT || 3450;
 
 
 app.get('/', function (req, res) {
